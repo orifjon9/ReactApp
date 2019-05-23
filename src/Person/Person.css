@@ -8,8 +8,8 @@
     margin-bottom: 10px;
 }
 
-/* @media (min-width: 500px) {
+@media (max-width: 800px) {
     .Person {
-        width: 450px;
+        width: 350px;
     }
-} */
+} 
