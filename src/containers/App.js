@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+// @ts-ignore
 import classes from './App.css';
 
 class App extends Component {
@@ -26,9 +27,9 @@ class App extends Component {
 
     // legacy
     // can removed in the future
-    componentWillMount(){
-        console.log('[App.js] componentWillMount');
-    }
+    // componentWillMount(){
+    //     console.log('[App.js] componentWillMount');
+    // }
 
     componentDidMount(){
         console.log('[App.js] componentDidMount');
