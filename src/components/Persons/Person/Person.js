@@ -6,6 +6,7 @@ const person = (props) => {
     if(random > 0.7){
         throw new Error('Something went wrong!');
     }*/
+    console.log('[Person.js] render');
 
     return (
         <div className={classes.Person}>
