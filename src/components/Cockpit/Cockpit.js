@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+// @ts-ignore
 import classes from './Cockpit.css';
 
 const cockpit = (props) => {
+
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect');
+        // http request...
+    });
+
     const assignedClasses = [];
     let btnClass = '';
 
-    if(props.showPersons) {
+    if (props.showPersons) {
         btnClass = classes.Red;
     }
 
@@ -18,11 +25,11 @@ const cockpit = (props) => {
     }
 
     return <div className={classes.Cockpit}>
-                <h1>{props.title}</h1>
-                <p className={assignedClasses.join(' ')}>This is really working</p>
-                <button className={btnClass} 
-                        onClick={props.click}>Toggle Persons</button>
-            </div>
+        <h1>{props.title}</h1>
+        <p className={assignedClasses.join(' ')}>This is really working</p>
+        <button className={btnClass}
+            onClick={props.click}>Toggle Persons</button>
+    </div>
 };
 
 export default cockpit;
