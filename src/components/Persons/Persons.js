@@ -2,22 +2,22 @@ import React from 'react';
 
 import Person from './Person/Person';
 
-class Persons extends React.Component {
+class Persons extends React.PureComponent {
 
     static getDerivedStateFormProps(props, state) {
         console.log('[Person] getDerivedStateFormProps', props);
         return state;
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Persons.js] shouldComponentUpdate', nextProps);
-        // true if continue
-        if(nextProps.persons !== this.props.persons){
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[Persons.js] shouldComponentUpdate', nextProps);
+    //     // true if continue
+    //     if(nextProps.persons !== this.props.persons){
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate', prevProps);
