@@ -9,16 +9,6 @@ class Persons extends React.PureComponent {
         return state;
     }
 
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     console.log('[Persons.js] shouldComponentUpdate', nextProps);
-    //     // true if continue
-    //     if(nextProps.persons !== this.props.persons){
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate', prevProps);
         return { message : 'Sanpshot!'}
