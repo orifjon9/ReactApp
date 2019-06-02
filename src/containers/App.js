@@ -20,7 +20,8 @@ class App extends Component {
             { id: 'P3', name: 'Nancy', age: 18 }
         ],
         showPersons: false,
-        showCockpit: true
+        showCockpit: true,
+        changeCounter: 0
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -48,7 +49,20 @@ class App extends Component {
         const persons = [...this.state.persons];
         persons[personIndex] = newPerson;
 
-        this.setState({ persons: persons });
+        // Bad practice because State does not guaranteed latest version of changeCounter
+        // this.setState({ 
+        //     persons: persons,
+        //     changeCounter : this.state.changeCounter + 1 
+        // });
+
+        // Correct approache 
+        // use this way if new value dependant of previous
+        this.setState((prevState, props) => {
+            return {
+                persons: persons,
+                changeCounter: prevState.changeCounter + 1
+            }
+        });
     };
 
     deletePersonHandler = (index) => {
