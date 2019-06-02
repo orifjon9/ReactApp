@@ -3,6 +3,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 // @ts-ignore
 import classes from './App.css';
+import WithClass from "../hoc/WithClass";
 
 class App extends Component {
 
@@ -69,7 +70,7 @@ class App extends Component {
         }
 
         return (
-            <div className={classes.App}>
+            <WithClass classes={classes.App}>
                 <button onClick={() => {
                     this.setState({ showCockpit: false })
                 }}>Remove Cockpit</button>
@@ -79,7 +80,7 @@ class App extends Component {
                     showPersons={this.state.showPersons}
                     click={this.togglePersonsHandler} /> : null}
                 {persons}
-            </div>
+            </WithClass>
         );
     }
 }
