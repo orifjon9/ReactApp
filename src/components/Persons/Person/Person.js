@@ -8,11 +8,11 @@ class Person extends React.Component {
     render() {
         console.log('[Person.js] render');
         return (
-            <Aux className={classes.Person}>
+            <React.Fragment>
                 <p onClick={this.props.click}>My name is {this.props.name} and I am {this.props.age} year old.</p>
                 <p>{this.props.children}</p>
                 <input type="text" onChange={this.props.changed} value={this.props.name} />
-            </Aux>
+            </React.Fragment>
         )
     }
 }
