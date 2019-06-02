@@ -5,6 +5,8 @@ import Cockpit from '../components/Cockpit/Cockpit';
 import classes from './App.css';
 import withClass from "../hoc/withClass";
 import Aux from '../hoc/Auxiliary';
+import AuthContext from '../context/auth-context';
+
 
 class App extends Component {
 
@@ -21,7 +23,8 @@ class App extends Component {
         ],
         showPersons: false,
         showCockpit: true,
-        changeCounter: 0
+        changeCounter: 0,
+        authenticated: false
     };
 
     static getDerivedStateFromProps(props, state) {
@@ -37,6 +40,13 @@ class App extends Component {
 
     componentDidMount() {
         console.log('[App.js] componentDidMount');
+    }
+
+    loginHandler = () => {
+        this.setState({
+            authenticated: true
+        });
+        console.log("authenticated");
     }
 
     nameChangedHandler = (event, id) => {
@@ -89,12 +99,21 @@ class App extends Component {
                 <button onClick={() => {
                     this.setState({ showCockpit: false })
                 }}>Remove Cockpit</button>
-                {this.state.showCockpit ? <Cockpit
-                    title={this.props.appTitle}
-                    personsLength={this.state.persons.length}
-                    showPersons={this.state.showPersons}
-                    click={this.togglePersonsHandler} /> : null}
-                {persons}
+
+                <AuthContext.Provider 
+                    value={{
+                        authenticated: this.state.authenticated,
+                        login: this.loginHandler
+                    }}>
+                    {
+                        this.state.showCockpit ? <Cockpit
+                            title={this.props.appTitle}
+                            personsLength={this.state.persons.length}
+                            showPersons={this.state.showPersons}
+                            click={this.togglePersonsHandler} /> : null
+                    }
+                    {persons}
+                </AuthContext.Provider>
             </Aux>
         );
     }
